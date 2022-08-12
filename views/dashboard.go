@@ -7,6 +7,8 @@ import (
 
 func DashboardViewer(w http.ResponseWriter, r *http.Request) {
 	var tpl = template.Must(template.ParseFiles("templates/dashboard.html"))
-	page := Page{Title: "Create new Project"}
+	page := Page{
+		Title: "Create new Project",
+	}
 	tpl.Execute(w, page)
 }
