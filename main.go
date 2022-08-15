@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"rProject/core"
 
 	"github.com/joho/godotenv"
 )
@@ -20,6 +21,7 @@ func main() {
 		"[main] start program",
 	)
 
-	log.Fatal(http.ListenAndServe(":"+port, Router(mux)))
+	core.DBOpen()
 
+	log.Fatal(http.ListenAndServe(":"+port, Router(mux)))
 }
