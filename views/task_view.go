@@ -2,6 +2,7 @@ package views
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"strings"
 )
@@ -16,10 +17,17 @@ func TaskHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateTask(w http.ResponseWriter) {
-	var tpl = template.Must(template.ParseFiles("templates/page_task_create.html"))
-	page := Page{
-		Title: "Create new task",
+
+	tpl, err := template.ParseFiles(
+		"./templates/page_base.html",
+		"./templates/block_header.html",
+		"./templates/page_task_create.html",
+		"./templates/block_foot.html",
+	)
+
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	tpl.Execute(w, page)
+	tpl.Execute(w, nil)
 }
