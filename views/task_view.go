@@ -1,9 +1,11 @@
 package views
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -13,7 +15,11 @@ func TaskHandler(w http.ResponseWriter, r *http.Request) {
 	if param == "create" {
 		CreateTask(w)
 	}
-	//  strings.TrimPrefix(req.URL.Path, "/provisions/"))
+
+	if _, err := strconv.Atoi(param); err == nil {
+		fmt.Printf("%q looks like a number.\n", param)
+	}
+
 }
 
 func CreateTask(w http.ResponseWriter) {
