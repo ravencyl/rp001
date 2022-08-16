@@ -1,5 +1,48 @@
 {{define "content"}}
-<div class="container-fluid">
+<div class="container-fluid" id="content">
     Test for body
+
+    <button @click="migrate_db">Migrate database</button>
 </div>
+
+<script>
+const { createApp } = Vue
+
+const app = createApp({
+  /* 根组件选项 */
+	delimiters:['${','}'],
+  data() {
+    return {
+        isActive: true,
+    	}
+  },
+	methods: {
+    migrate_db(event) {
+      // 方法中的 `this` 指向当前活跃的组件实例
+      alert(`Hello ${this.name}!`)
+      // `event` 是 DOM 原生事件
+      if (event) {
+        alert(event.target.tagName)
+      }
+    }
+  }
+})
+
+const content = createApp({
+  delimiters:['${','}'],
+  methods: {
+    migrate_db(event) {
+      // 方法中的 `this` 指向当前活跃的组件实例
+      alert(`Hello ${this.name}!`)
+      // `event` 是 DOM 原生事件
+      if (event) {
+        alert(event.target.tagName)
+      }
+    }
+  }
+
+})
+content.mount('#content')
+app.mount('#slideMenu')
+</script>
 {{end}}
