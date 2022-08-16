@@ -29,5 +29,5 @@ func DatabaseMigration(w http.ResponseWriter) {
 		log.Fatal(err)
 	}
 
-	tpl.Execute(w, nil)
+	tpl.Execute(w, Page{Title: "Admin-System"})
 }
