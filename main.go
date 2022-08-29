@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	log.Println("main.main")
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("Error loading .env file")
@@ -21,7 +22,7 @@ func main() {
 		"[main] start program",
 	)
 
-	core.DBOpen()
+	core.DB()
 
 	log.Fatal(http.ListenAndServe(":"+port, Router(mux)))
 }

@@ -11,7 +11,7 @@ import (
 
 // https://gorm.io/docs/
 
-func DBOpen() *gorm.DB {
+func DB() *gorm.DB {
 
 	err := godotenv.Load()
 

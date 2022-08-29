@@ -13,8 +13,7 @@ func Router(mux *http.ServeMux) *http.ServeMux {
 	// mux.HandleFunc("/upload", viewer.UploadPageViewer)
 	// mux.HandleFunc("/install", viewer.InstallPageViewer)
 
-	// fs := http.FileServer(http.Dir("asset"))
-	// mux.Handle("/asset/", http.StripPrefix("/asset/", fs))
+	mux.HandleFunc("/api/", views.APIHandler)
 	mux.HandleFunc("/task/", views.TaskHandler)
 	mux.HandleFunc("/admin/", views.AdminHandler) // admin page handler
 	return mux

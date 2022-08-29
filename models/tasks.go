@@ -1,11 +1,16 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 type Task struct {
-	ID      uint   `gorm:"primaryKey,index"`
-	Name    string `json:"project_name"`
-	Summary string `json:"project_summary"`
-	Created time.Time
-	Updated time.Time
+	ID          uint   `gorm:"primaryKey,index"`
+	Name        string `json:"name"`
+	Content     string `gorm:"text" json:"content"`
+	Status      string
+	TargetAt    *time.Time
+	CompletedAt *time.Time
+	CreatedAt   time.Time `gorm:"autoCreateTime"`
+	UpdatedAt   time.Time `gorm:"autoCreateTime"`
 }
