@@ -19,11 +19,12 @@ const app = createApp({
 	methods: {
     migrate_db(event) {
       // 方法中的 `this` 指向当前活跃的组件实例
-      alert(`Hello ${this.name}!`)
-      // `event` 是 DOM 原生事件
-      if (event) {
-        alert(event.target.tagName)
-      }
+      this.$http.get('/try/ajax/ajax_info.txt').then(function(res){
+        	document.write(res.body);    
+        },
+		function(){
+            console.log('请求失败处理');
+        });
     }
   }
 })
